@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list-authors',
@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListAuthorsComponent implements OnInit {
 
+  @Input() filds: any;
+
+  yesNames = ['Neto', 'Neta', 'Filho', 'Filha', 'Sobrinho', 'Sobrinha', 'Junior'];
+  noNames = ['da', 'de', 'do', 'das', 'dos'];
+  authorNameFormater = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.getNames()
+  }
+  
+  getNames() {
+
+    this.filds.forEach(element => {
+      this.filds = [];
+      
+      this.filds.push({
+        author:element.author
+      })
+      
+    });
   }
 }

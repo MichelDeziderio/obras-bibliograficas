@@ -2,19 +2,20 @@
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
 
-            <form [formGroup]="getNumbers" (ngSubmit)="getNumberFilds(getNumbers)" *ngIf="visible">
+            <form [formGroup]="getNumbers" (ngSubmit)="getNumberFilds(getNumbers)" *ngIf="visibleForm1">
                 <input type="number" class="form-control form-fild" placeholder="Enter the number of names you want"
                     formControlName="numbers">
                 <button class="btn btn-success mt-3">Generate Filds</button>
             </form>
 
-            <form *ngIf="!visible">
+            <form *ngIf="visibleForm2">
 
                 <ng-container *ngFor="let item of filds; let i = index">
-                    <input type="text" class="form-control form-fild mt-2" placeholder="Enter the names you want">
+                    <input type="text" class="form-control form-fild mt-2" placeholder="Enter the names you want"
+                        [(ngModel)]="item.author" [name]="'item' + i" [value]="item.author">
                 </ng-container>
 
-                <button class="btn btn-success mt-3">Generate Filds</button>
+                <button class="btn btn-success mt-3" (click)="getNameAuthors()">Generate Filds</button>
             </form>
 
         </div>
@@ -24,11 +25,17 @@
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 Size is larger than the limit, try a smaller number
                 <button type="button" class="close" (click)="closeAlert()">
-                  <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
-              </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center" *ngIf="showAuthors">
+        <div class="col-md-6">            
+            <app-list-authors [filds]="filds"></app-list-authors>
+            <button class="btn btn-success mt-3 d-block" (click)="removeList()">Generate Filds</button>
         </div>
     </div>
 </div>
 
-<app-list-authors></app-list-authors>
