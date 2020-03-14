@@ -1,1 +1,34 @@
-<p>author works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+
+            <form [formGroup]="getNumbers" (ngSubmit)="getNumberFilds(getNumbers)" *ngIf="visible">
+                <input type="number" class="form-control form-fild" placeholder="Enter the number of names you want"
+                    formControlName="numbers">
+                <button class="btn btn-success mt-3">Generate Filds</button>
+            </form>
+
+            <form *ngIf="!visible">
+
+                <ng-container *ngFor="let item of filds; let i = index">
+                    <input type="text" class="form-control form-fild mt-2" placeholder="Enter the names you want">
+                </ng-container>
+
+                <button class="btn btn-success mt-3">Generate Filds</button>
+            </form>
+
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="close">
+        <div class="col-md-6 text-center">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Size is larger than the limit, try a smaller number
+                <button type="button" class="close" (click)="closeAlert()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+        </div>
+    </div>
+</div>
+
+<app-list-authors></app-list-authors>

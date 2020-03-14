@@ -1,0 +1,19 @@
+.form-fild{
+    height: 50px;
+    transition: ease-in-out 300ms;
+    cursor: pointer;
+    
+    &:hover{
+        box-shadow: 3px 3px 10px rgba(0,0,0, .2);
+    }
+}
+
+.btn-success{
+    min-width:200px;
+    height: 45px;
+    transition: ease-in-out 300ms;
+    
+    &:hover{
+        box-shadow: 3px 3px 10px rgba(0,0,0, .3);
+    }
+}
